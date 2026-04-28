@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>작은 습관 정원</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="status-bar" aria-label="기기 상태">
+        <span id="statusTime">1:04</span>
+        <div class="status-icons" aria-hidden="true">
+          <span class="signal"></span>
+          <span class="wifi"></span>
+          <span class="battery"></span>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero" aria-labelledby="heroTitle">
+          <div class="hero-copy">
+            <p class="eyebrow">HABIT GARDEN</p>
+            <h1 id="heroTitle">작은 습관 정원</h1>
+            <p>습관을 심고 가볍게 돌봐요.</p>
+          </div>
+          <div class="hero-plant">
+            <img src="./assets/sprout-placeholder.svg" alt="새싹 화분" />
+          </div>
+        </section>
+
+        <section class="habit-section" aria-labelledby="habitTitle">
+          <div class="section-heading">
+            <img src="./assets/sprout-placeholder.svg" alt="" />
+            <div>
+              <h2 id="habitTitle">내가 심은 습관</h2>
+              <p>몇 가지만 천천히 키워보세요.</p>
+            </div>
+          </div>
+
+          <div class="habit-grid" id="habitGrid"></div>
+        </section>
+
+        <section class="garden-note" aria-label="오늘의 문장">
+          <img src="./assets/sprout-placeholder.svg" alt="" />
+          <p>작은 돌봄이, 큰 변화를 만들어요.</p>
+        </section>
+      </main>
+    </div>
+
+    <template id="habitCardTemplate">
+      <article class="habit-card">
+        <div class="plant-preview">
+          <img src="./assets/sprout-placeholder.svg" alt="" />
+        </div>
+        <div class="habit-body">
+          <h3></h3>
+          <dl class="habit-meta">
+            <div>
+              <dt>마지막 돌봄</dt>
+              <dd class="last-care"></dd>
+            </div>
+            <div>
+              <dt>이번 주</dt>
+              <dd class="weekly-care"></dd>
+            </div>
+          </dl>
+          <button type="button" class="water-button">
+            <span class="watering-can" aria-hidden="true"></span>
+            <span>물주기</span>
+          </button>
+        </div>
+      </article>
+    </template>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

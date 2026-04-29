@@ -14,6 +14,9 @@
   --water: #8ea8a2;
   --danger: #a75d4f;
   --shadow: 0 1.25rem 3.5rem rgba(98, 70, 42, 0.11);
+  --meta-icon: #8da27c;
+  --leaf-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M11 21a8 8 0 0 1-8-8C3 7 12 3 21 3c0 9-4 18-10 18Zm-5.7-8.6C8.7 12.6 13 14 16.3 17c1.2-2.1 2-5.4 2.4-11.7C12.1 5.8 5 9 5 13a6 6 0 0 0 8.6 5.4c-2.9-2.4-6.1-3.7-8.4-3.9l.1-2.1Z'/%3E%3C/svg%3E");
+  --drop-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M12 22a7.5 7.5 0 0 1-7.5-7.5C4.5 10.5 12 2 12 2s7.5 8.5 7.5 12.5A7.5 7.5 0 0 1 12 22Zm0-3a4.5 4.5 0 0 0 4.5-4.5c0-1.9-2.5-5.8-4.5-8.4-2 2.6-4.5 6.5-4.5 8.4A4.5 4.5 0 0 0 12 19Z'/%3E%3C/svg%3E");
 }
 
 * {
@@ -64,11 +67,11 @@ img {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 5.6rem;
+  grid-template-columns: minmax(0, 1fr) 6.2rem;
   align-items: center;
   gap: 1rem;
-  min-height: 9rem;
-  padding: 1.25rem 1.35rem;
+  min-height: 9.6rem;
+  padding: 1.4rem 1.5rem;
   background:
     linear-gradient(90deg, rgba(255, 255, 253, 0.94), rgba(255, 255, 253, 0.78)),
     radial-gradient(circle at 90% 76%, rgba(154, 173, 131, 0.16), transparent 7rem);
@@ -87,9 +90,9 @@ p {
 h1 {
   margin-bottom: 0.5rem;
   color: var(--leaf-deep);
-  font-size: 1.28rem;
+  font-size: 1.36rem;
   line-height: 1.18;
-  font-weight: 850;
+  font-weight: 900;
 }
 
 .hero-copy > p:last-child {
@@ -101,7 +104,7 @@ h1 {
 }
 
 .hero-plant {
-  width: 5.4rem;
+  width: 6.1rem;
   max-width: 100%;
   justify-self: end;
   object-fit: contain;
@@ -130,8 +133,8 @@ h1 {
 }
 
 .section-title img {
-  width: 2rem;
-  height: 2rem;
+  width: 2.25rem;
+  height: 2.25rem;
   object-fit: contain;
   flex: 0 0 auto;
 }
@@ -201,15 +204,15 @@ h1 {
   display: grid;
   place-items: center;
   justify-items: center;
-  min-height: 8.65rem;
+  min-height: 8.35rem;
   background:
-    radial-gradient(circle at center 78%, rgba(154, 173, 131, 0.22), transparent 5.4rem),
+    radial-gradient(circle at center 78%, rgba(154, 173, 131, 0.2), transparent 5.15rem),
     linear-gradient(180deg, #f5f8ef, #f4f1e6);
 }
 
 .plant-image {
-  width: 8rem;
-  height: 8rem;
+  width: 7.75rem;
+  height: 7.75rem;
   margin: auto;
   background: transparent;
   object-fit: contain;
@@ -312,37 +315,47 @@ h1 {
 
 .habit-meta {
   display: grid;
-  gap: 0.65rem;
+  gap: 0.55rem;
   margin: 0 0 1.1rem;
   color: var(--muted);
   font-size: 0.94rem;
+  line-height: 1.25;
 }
 
 .habit-meta div {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  align-items: baseline;
-  gap: 0.55rem;
+  display: flex;
+  align-items: center;
+  min-height: 1.35rem;
+  gap: 0.5rem;
 }
 
 .habit-meta dt {
   display: flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.4rem;
   font-weight: 600;
+  line-height: 1.25;
 }
 
 .habit-meta dt::before {
   content: "";
-  width: 1rem;
-  height: 1rem;
+  width: 0.95rem;
+  height: 0.95rem;
   flex: 0 0 auto;
-  background: url("./assets/images/leaf-deco.png") center / contain no-repeat;
+  background: var(--meta-icon);
+  mask: var(--leaf-icon) center / contain no-repeat;
+  -webkit-mask: var(--leaf-icon) center / contain no-repeat;
+}
+
+.habit-meta div:nth-child(2) dt::before {
+  mask-image: var(--drop-icon);
+  -webkit-mask-image: var(--drop-icon);
 }
 
 .habit-meta dd {
   min-width: 0;
   margin: 0;
+  line-height: 1.25;
 }
 
 .water-button {
@@ -351,12 +364,12 @@ h1 {
   justify-content: center;
   gap: 0.38rem;
   width: 100%;
-  min-height: 2.65rem;
+  min-height: 2.55rem;
   border: 0;
   border-radius: 999px;
-  background: linear-gradient(180deg, #b9c8a7, #9eaf8d);
+  background: linear-gradient(180deg, #bccbaa, #a2b590);
   color: #fffdf6;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   font-weight: 850;
   cursor: pointer;
   box-shadow: inset 0 0.08rem 0 rgba(255, 255, 255, 0.32);
@@ -367,9 +380,13 @@ h1 {
     box-shadow 160ms ease;
 }
 
+.water-label {
+  line-height: 1;
+}
+
 .water-button:hover:not(:disabled) {
   transform: translateY(-0.08rem);
-  background: linear-gradient(180deg, #afc09a, #91a17f);
+  background: linear-gradient(180deg, #b2c49d, #94aa80);
   box-shadow:
     inset 0 0.08rem 0 rgba(255, 255, 255, 0.34),
     0 0.65rem 1.2rem rgba(126, 150, 106, 0.22);
@@ -380,7 +397,7 @@ h1 {
 }
 
 .water-button.is-watered {
-  background: linear-gradient(180deg, #edf3ef, #dce8e4);
+  background: linear-gradient(180deg, #eef4f0, #dfeae6);
   border-color: rgba(123, 155, 148, 0.28);
   color: #6f918b;
   box-shadow: inset 0 0.08rem 0 rgba(255, 255, 255, 0.56);
@@ -572,13 +589,13 @@ textarea:focus-visible {
   }
 
   .hero {
-    grid-template-columns: minmax(0, 1fr) 4.8rem;
-    min-height: 8.35rem;
-    padding: 1.05rem;
+    grid-template-columns: minmax(0, 1fr) 5.3rem;
+    min-height: 8.9rem;
+    padding: 1.15rem;
   }
 
   h1 {
-    font-size: 1.18rem;
+    font-size: 1.26rem;
   }
 
   .hero-copy > p:last-child {
@@ -586,7 +603,7 @@ textarea:focus-visible {
   }
 
   .hero-plant {
-    width: 4.65rem;
+    width: 5.15rem;
   }
 
   .section-heading {
@@ -610,13 +627,13 @@ textarea:focus-visible {
   }
 
   .hero {
-    grid-template-columns: minmax(0, 1fr) 6.6rem;
-    min-height: 10rem;
-    padding: 1.4rem 1.75rem;
+    grid-template-columns: minmax(0, 1fr) 7.25rem;
+    min-height: 10.7rem;
+    padding: 1.55rem 1.9rem;
   }
 
   h1 {
-    font-size: 1.5rem;
+    font-size: 1.62rem;
   }
 
   .hero-copy > p:last-child {
@@ -624,7 +641,7 @@ textarea:focus-visible {
   }
 
   .hero-plant {
-    width: 6.25rem;
+    width: 7rem;
   }
 
   .habit-section {

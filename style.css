@@ -64,11 +64,11 @@ img {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 4.8rem;
+  grid-template-columns: minmax(0, 1fr) 5.6rem;
   align-items: center;
-  gap: 0.8rem;
-  min-height: 7.6rem;
-  padding: 0.95rem 1.1rem;
+  gap: 1rem;
+  min-height: 9rem;
+  padding: 1.25rem 1.35rem;
   background:
     linear-gradient(90deg, rgba(255, 255, 253, 0.94), rgba(255, 255, 253, 0.78)),
     radial-gradient(circle at 90% 76%, rgba(154, 173, 131, 0.16), transparent 7rem);
@@ -85,9 +85,9 @@ p {
 }
 
 h1 {
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.5rem;
   color: var(--leaf-deep);
-  font-size: 1.15rem;
+  font-size: 1.28rem;
   line-height: 1.18;
   font-weight: 850;
 }
@@ -96,19 +96,19 @@ h1 {
   max-width: 22rem;
   margin-bottom: 0;
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   line-height: 1.55;
 }
 
 .hero-plant {
-  width: 4.65rem;
+  width: 5.4rem;
   max-width: 100%;
   justify-self: end;
   filter: drop-shadow(0 1rem 1rem rgba(111, 123, 87, 0.15));
 }
 
 .habit-section {
-  margin-top: 1.55rem;
+  margin-top: 1.8rem;
 }
 
 .section-heading {
@@ -563,21 +563,21 @@ textarea:focus-visible {
   }
 
   .hero {
-    grid-template-columns: minmax(0, 1fr) 4.2rem;
-    min-height: 7.1rem;
-    padding: 0.9rem;
+    grid-template-columns: minmax(0, 1fr) 4.8rem;
+    min-height: 8.35rem;
+    padding: 1.05rem;
   }
 
   h1 {
-    font-size: 1.08rem;
+    font-size: 1.18rem;
   }
 
   .hero-copy > p:last-child {
-    font-size: 0.86rem;
+    font-size: 0.9rem;
   }
 
   .hero-plant {
-    width: 4.1rem;
+    width: 4.65rem;
   }
 
   .section-heading {
@@ -601,25 +601,25 @@ textarea:focus-visible {
   }
 
   .hero {
-    grid-template-columns: minmax(0, 1fr) 5.8rem;
-    min-height: 8.6rem;
-    padding: 1.1rem 1.4rem;
+    grid-template-columns: minmax(0, 1fr) 6.6rem;
+    min-height: 10rem;
+    padding: 1.4rem 1.75rem;
   }
 
   h1 {
-    font-size: 1.35rem;
+    font-size: 1.5rem;
   }
 
   .hero-copy > p:last-child {
-    font-size: 0.98rem;
+    font-size: 1.03rem;
   }
 
   .hero-plant {
-    width: 5.5rem;
+    width: 6.25rem;
   }
 
   .habit-section {
-    margin-top: 1.85rem;
+    margin-top: 2.1rem;
   }
 
   .section-heading h2 {

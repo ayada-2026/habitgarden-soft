@@ -104,6 +104,7 @@ h1 {
   width: 5.4rem;
   max-width: 100%;
   justify-self: end;
+  object-fit: contain;
   filter: drop-shadow(0 1rem 1rem rgba(111, 123, 87, 0.15));
 }
 
@@ -330,7 +331,7 @@ h1 {
   width: 1rem;
   height: 1rem;
   flex: 0 0 auto;
-  background: url("./assets/growth-sprout.svg") center / contain no-repeat;
+  background: url("./assets/images/leaf-deco.png") center / contain no-repeat;
 }
 
 .habit-meta dd {
@@ -443,6 +444,7 @@ textarea:focus-visible {
   width: 5.8rem;
   height: 5.8rem;
   margin-bottom: 0.35rem;
+  object-fit: contain;
 }
 
 .empty-state h3 {
@@ -470,6 +472,7 @@ textarea:focus-visible {
   width: 3.2rem;
   height: 3.2rem;
   opacity: 0.78;
+  object-fit: contain;
 }
 
 .garden-note p {

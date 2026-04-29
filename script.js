@@ -4,22 +4,27 @@ const growthStages = [
   {
     min: 0,
     label: "씨앗",
-    image: "./assets/growth-seed.svg",
+    image: "./assets/images/seed.png",
   },
   {
     min: 1,
     label: "새싹",
-    image: "./assets/growth-sprout.svg",
+    image: "./assets/images/sprout-1.png",
   },
   {
-    min: 4,
+    min: 3,
     label: "잎새",
-    image: "./assets/growth-leaf.svg",
+    image: "./assets/images/sprout-2.png",
   },
   {
-    min: 8,
-    label: "작은 나무",
-    image: "./assets/growth-plant.svg",
+    min: 6,
+    label: "작은 식물",
+    image: "./assets/images/plant-1.png",
+  },
+  {
+    min: 11,
+    label: "큰 식물",
+    image: "./assets/images/plant-2.png",
   },
 ];
 

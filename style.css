@@ -105,6 +105,8 @@ h1 {
   max-width: 100%;
   justify-self: end;
   object-fit: contain;
+  object-position: center;
+  background: transparent;
   filter: drop-shadow(0 1rem 1rem rgba(111, 123, 87, 0.15));
 }
 
@@ -198,6 +200,7 @@ h1 {
   position: relative;
   display: grid;
   place-items: center;
+  justify-items: center;
   min-height: 8.65rem;
   background:
     radial-gradient(circle at center 78%, rgba(154, 173, 131, 0.22), transparent 5.4rem),
@@ -207,7 +210,10 @@ h1 {
 .plant-image {
   width: 8rem;
   height: 8rem;
+  margin: auto;
+  background: transparent;
   object-fit: contain;
+  object-position: center;
 }
 
 .card-menu-wrap {

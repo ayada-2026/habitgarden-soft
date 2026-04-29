@@ -244,6 +244,10 @@ h1 {
   box-shadow: 0 0.8rem 1.6rem rgba(94, 67, 40, 0.13);
 }
 
+.card-menu[hidden] {
+  display: none;
+}
+
 .card-menu button {
   min-height: 2.35rem;
   padding: 0 0.7rem;

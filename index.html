@@ -22,27 +22,41 @@
           <div class="hero-copy">
             <p class="eyebrow">HABIT GARDEN</p>
             <h1 id="heroTitle">작은 습관 정원</h1>
-            <p>습관을 심고 가볍게 돌봐요.</p>
+            <p>오래 키우고 싶은 습관만 심고, 오늘 한 번 가볍게 돌봐요.</p>
           </div>
-          <div class="hero-plant">
-            <img src="./assets/sprout-placeholder.svg" alt="새싹 화분" />
-          </div>
+          <img class="hero-plant" src="./assets/growth-sprout.svg" alt="새싹" />
         </section>
 
         <section class="habit-section" aria-labelledby="habitTitle">
           <div class="section-heading">
-            <img src="./assets/sprout-placeholder.svg" alt="" />
-            <div>
-              <h2 id="habitTitle">내가 심은 습관</h2>
-              <p>몇 가지만 천천히 키워보세요.</p>
+            <div class="section-title">
+              <img src="./assets/growth-sprout.svg" alt="" />
+              <div>
+                <h2 id="habitTitle">내가 심은 습관</h2>
+                <p>몇 가지 습관을 천천히 키워보세요.</p>
+              </div>
             </div>
+            <button type="button" class="seed-button" id="addHabitButton">
+              <span aria-hidden="true">+</span>
+              <span>씨앗 심기</span>
+            </button>
+          </div>
+
+          <div class="empty-state" id="emptyState" hidden>
+            <img src="./assets/growth-seed.svg" alt="" />
+            <h3>아직 심은 습관이 없어요</h3>
+            <p>작게 시작할 습관 하나를 심어보세요</p>
+            <button type="button" class="seed-button" id="emptyAddButton">
+              <span aria-hidden="true">+</span>
+              <span>씨앗 심기</span>
+            </button>
           </div>
 
           <div class="habit-grid" id="habitGrid"></div>
         </section>
 
         <section class="garden-note" aria-label="오늘의 문장">
-          <img src="./assets/sprout-placeholder.svg" alt="" />
+          <img src="./assets/growth-leaf.svg" alt="" />
           <p>작은 돌봄이, 큰 변화를 만들어요.</p>
         </section>
       </main>
@@ -51,27 +65,61 @@
     <template id="habitCardTemplate">
       <article class="habit-card">
         <div class="plant-preview">
-          <img src="./assets/sprout-placeholder.svg" alt="" />
+          <img class="plant-image" src="./assets/growth-seed.svg" alt="" />
+          <div class="card-menu-wrap">
+            <button type="button" class="menu-button" aria-label="습관 메뉴" aria-expanded="false">
+              <span aria-hidden="true">...</span>
+            </button>
+            <div class="card-menu" hidden>
+              <button type="button" data-action="edit">수정</button>
+              <button type="button" data-action="delete">삭제</button>
+            </div>
+          </div>
         </div>
         <div class="habit-body">
-          <h3></h3>
+          <div class="habit-title-row">
+            <h3></h3>
+            <span class="growth-label"></span>
+          </div>
+          <p class="habit-note"></p>
           <dl class="habit-meta">
             <div>
               <dt>마지막 돌봄</dt>
               <dd class="last-care"></dd>
             </div>
             <div>
-              <dt>이번 주</dt>
-              <dd class="weekly-care"></dd>
+              <dt>물준 날</dt>
+              <dd class="water-count"></dd>
             </div>
           </dl>
           <button type="button" class="water-button">
             <span class="watering-can" aria-hidden="true"></span>
-            <span>물주기</span>
+            <span class="water-label">물주기</span>
           </button>
         </div>
       </article>
     </template>
+
+    <dialog class="habit-dialog" id="habitDialog">
+      <form method="dialog" class="habit-form" id="habitForm">
+        <div>
+          <p class="dialog-kicker" id="dialogKicker">새 씨앗</p>
+          <h2 id="dialogTitle">습관 심기</h2>
+        </div>
+        <label>
+          <span>습관 이름</span>
+          <input id="habitNameInput" name="habitName" type="text" maxlength="24" required />
+        </label>
+        <label>
+          <span>짧은 기준 / 메모</span>
+          <textarea id="habitNoteInput" name="habitNote" rows="3" maxlength="80"></textarea>
+        </label>
+        <div class="dialog-actions">
+          <button type="button" class="ghost-button" id="cancelDialogButton">닫기</button>
+          <button type="submit" class="seed-button">저장</button>
+        </div>
+      </form>
+    </dialog>
 
     <script src="./script.js"></script>
   </body>

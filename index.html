@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>작은 습관 정원</title>
+    <meta name="theme-color" content="#fbf6ed" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="습관정원" />
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="apple-touch-icon" href="./assets/icons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/icons/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="./assets/icons/favicon-64.png" />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
@@ -33,7 +40,7 @@
           </div>
 
           <div class="empty-state" id="emptyState" hidden>
-            <img src="./assets/images/seed.png" alt="" />
+            <img src="./assets/images/seed-v2.png" alt="" />
             <h3>아직 심은 습관이 없어요</h3>
             <p>작게 시작할 습관 하나를 심어보세요</p>
             <button type="button" class="seed-button" id="emptyAddButton">
@@ -55,7 +62,7 @@
     <template id="habitCardTemplate">
       <article class="habit-card">
         <div class="plant-preview">
-          <img class="plant-image" src="./assets/images/seed.png" alt="" />
+          <img class="plant-image" src="./assets/images/seed-v2.png" alt="" />
           <div class="card-menu-wrap">
             <button type="button" class="menu-button" aria-label="습관 메뉴" aria-expanded="false">
               <span aria-hidden="true">...</span>

@@ -1,0 +1,24 @@
+{
+  "name": "작은 습관 정원",
+  "short_name": "습관정원",
+  "description": "오래 키우고 싶은 습관을 심고 가볍게 돌보는 정원 앱",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fbf6ed",
+  "theme_color": "#fbf6ed",
+  "icons": [
+    {
+      "src": "./assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

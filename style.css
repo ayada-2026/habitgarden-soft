@@ -133,8 +133,8 @@ h1 {
 }
 
 .section-title img {
-  width: 3.35rem;
-  height: 3.35rem;
+  width: 3.75rem;
+  height: 3.75rem;
   object-fit: contain;
   flex: 0 0 auto;
   opacity: 0.88;
@@ -622,8 +622,8 @@ textarea:focus-visible {
   }
 
   .section-title img {
-    width: 3rem;
-    height: 3rem;
+    width: 3.35rem;
+    height: 3.35rem;
   }
 
   .seed-button {

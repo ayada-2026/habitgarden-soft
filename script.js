@@ -4,12 +4,12 @@ const growthStages = [
   {
     min: 0,
     label: "씨앗",
-    image: "./assets/images/seed.png",
+    image: "./assets/images/seed-v2.png",
   },
   {
     min: 1,
     label: "새싹",
-    image: "./assets/images/sprout-1.png",
+    image: "./assets/images/sprout-1-v2.png",
   },
   {
     min: 3,

@@ -26,7 +26,6 @@ const growthStages = [
 let habits = loadHabits();
 let editingHabitId = null;
 
-const statusTime = document.querySelector("#statusTime");
 const habitGrid = document.querySelector("#habitGrid");
 const emptyState = document.querySelector("#emptyState");
 const template = document.querySelector("#habitCardTemplate");
@@ -118,15 +117,6 @@ function saveHabits() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(habits));
 }
 
-function renderTime() {
-  const now = new Date();
-  statusTime.textContent = now.toLocaleTimeString("ko-KR", {
-    hour: "numeric",
-    minute: "2-digit",
-    hour12: false,
-  });
-}
-
 function getGrowthStage(totalWaterCount) {
   return growthStages.reduce((currentStage, stage) => {
     return totalWaterCount >= stage.min ? stage : currentStage;
@@ -193,7 +183,7 @@ function renderHabits() {
       growthLabel.textContent = growthStage.label;
       note.textContent = habit.note || "천천히 돌볼 기준을 적어두세요.";
       lastCare.textContent = formatLastCare(habit);
-      waterCount.textContent = `${totalWaterCount}번`;
+      waterCount.textContent = `${totalWaterCount}회`;
       waterLabel.textContent = wateredToday ? "오늘 물줬어요" : "물주기";
       waterButton.classList.toggle("is-watered", wateredToday);
       waterButton.disabled = wateredToday;
@@ -204,6 +194,10 @@ function renderHabits() {
         closeAllMenus();
         menu.hidden = !willOpen;
         menuButton.setAttribute("aria-expanded", String(willOpen));
+      });
+
+      menu.addEventListener("click", (event) => {
+        event.stopPropagation();
       });
 
       editButton.addEventListener("click", () => {
@@ -319,6 +313,4 @@ habitDialog.addEventListener("click", (event) => {
 });
 document.addEventListener("click", closeAllMenus);
 
-renderTime();
 renderHabits();
-setInterval(renderTime, 30_000);

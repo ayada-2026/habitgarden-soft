@@ -59,113 +59,16 @@ img {
   width: min(100%, 56rem);
   min-height: 100vh;
   margin: 0 auto;
-  padding: 2.25rem 1.25rem 4rem;
-}
-
-.status-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 2rem;
-  margin-bottom: 1.3rem;
-  padding: 0 0.35rem;
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: #111;
-}
-
-.status-icons {
-  display: flex;
-  align-items: center;
-  gap: 0.42rem;
-  transform: scale(0.72);
-  transform-origin: right center;
-}
-
-.signal {
-  position: relative;
-  width: 2.75rem;
-  height: 1.625rem;
-}
-
-.signal::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(#111, #111) 0 68% / 0.35rem 0.52rem no-repeat,
-    linear-gradient(#111, #111) 0.55rem 48% / 0.35rem 0.82rem no-repeat,
-    linear-gradient(#111, #111) 1.1rem 28% / 0.35rem 1.12rem no-repeat,
-    linear-gradient(#111, #111) 1.65rem 8% / 0.35rem 1.42rem no-repeat;
-  border-radius: 0.2rem;
-}
-
-.wifi {
-  position: relative;
-  width: 2.25rem;
-  height: 1.625rem;
-}
-
-.wifi::before,
-.wifi::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  border: 0.26rem solid #111;
-  border-bottom: 0;
-  border-radius: 2rem 2rem 0 0;
-  transform: translateX(-50%);
-}
-
-.wifi::before {
-  top: 0.05rem;
-  width: 2rem;
-  height: 1rem;
-}
-
-.wifi::after {
-  top: 0.55rem;
-  width: 1rem;
-  height: 0.5rem;
-}
-
-.battery {
-  position: relative;
-  width: 3.375rem;
-  height: 1.625rem;
-  border: 0.18rem solid #111;
-  border-radius: 0.38rem;
-}
-
-.battery::before {
-  content: "";
-  position: absolute;
-  top: 0.25rem;
-  left: 0.25rem;
-  width: 2.35rem;
-  height: 0.78rem;
-  background: #111;
-  border-radius: 0.2rem;
-}
-
-.battery::after {
-  content: "";
-  position: absolute;
-  right: -0.42rem;
-  top: 0.46rem;
-  width: 0.22rem;
-  height: 0.58rem;
-  background: #111;
-  border-radius: 0 0.2rem 0.2rem 0;
+  padding: 1rem 1.25rem 4rem;
 }
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 6.5rem;
+  grid-template-columns: minmax(0, 1fr) 5.75rem;
   align-items: center;
-  gap: 1rem;
-  min-height: 11.5rem;
-  padding: 1.45rem;
+  gap: 0.9rem;
+  min-height: 9.75rem;
+  padding: 1.1rem 1.25rem;
   background:
     linear-gradient(90deg, rgba(255, 255, 253, 0.94), rgba(255, 255, 253, 0.78)),
     radial-gradient(circle at 90% 76%, rgba(154, 173, 131, 0.16), transparent 7rem);
@@ -175,9 +78,9 @@ img {
 }
 
 .eyebrow {
-  margin: 0 0 0.55rem;
+  margin: 0 0 0.4rem;
   color: var(--leaf-deep);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 800;
 }
 
@@ -189,8 +92,8 @@ p {
 }
 
 h1 {
-  margin-bottom: 0.55rem;
-  font-size: 2rem;
+  margin-bottom: 0.45rem;
+  font-size: 1.78rem;
   line-height: 1.18;
   font-weight: 850;
 }
@@ -199,19 +102,19 @@ h1 {
   max-width: 22rem;
   margin-bottom: 0;
   color: var(--muted);
-  font-size: 0.98rem;
+  font-size: 0.93rem;
   line-height: 1.55;
 }
 
 .hero-plant {
-  width: 6.25rem;
+  width: 5.8rem;
   max-width: 100%;
   justify-self: end;
   filter: drop-shadow(0 1rem 1rem rgba(111, 123, 87, 0.15));
 }
 
 .habit-section {
-  margin-top: 2.35rem;
+  margin-top: 2rem;
 }
 
 .section-heading {
@@ -300,15 +203,15 @@ h1 {
   position: relative;
   display: grid;
   place-items: center;
-  min-height: 11.25rem;
+  min-height: 9.7rem;
   background:
     radial-gradient(circle at center 78%, rgba(154, 173, 131, 0.22), transparent 6rem),
     linear-gradient(180deg, #f5f8ef, #f4f1e6);
 }
 
 .plant-image {
-  width: 8.5rem;
-  height: 8.5rem;
+  width: 8.9rem;
+  height: 8.9rem;
   object-fit: contain;
 }
 
@@ -382,13 +285,15 @@ h1 {
 
 .growth-label {
   flex: 0 0 auto;
-  padding: 0.25rem 0.5rem;
-  background: var(--mint);
-  border: 0.1rem solid rgba(127, 150, 106, 0.14);
+  min-width: 4rem;
+  padding: 0.27rem 0.55rem;
+  background: #edf2e8;
+  border: 0.1rem solid #dce5d6;
   border-radius: 999px;
-  color: var(--leaf-deep);
+  color: #7f8f6f;
   font-size: 0.78rem;
   font-weight: 800;
+  text-align: center;
 }
 
 .habit-note {
@@ -449,6 +354,7 @@ h1 {
   font-weight: 850;
   cursor: pointer;
   box-shadow: inset 0 0.08rem 0 rgba(255, 255, 255, 0.32);
+  border: 0.1rem solid rgba(126, 150, 106, 0.16);
   transition:
     transform 160ms ease,
     background 160ms ease,
@@ -468,7 +374,10 @@ h1 {
 }
 
 .water-button.is-watered {
-  background: linear-gradient(180deg, #aabeba, #8ca7a2);
+  background: linear-gradient(180deg, #edf3ef, #dce8e4);
+  border-color: rgba(123, 155, 148, 0.28);
+  color: #6f918b;
+  box-shadow: inset 0 0.08rem 0 rgba(255, 255, 255, 0.56);
 }
 
 .water-button:focus-visible,
@@ -651,24 +560,25 @@ textarea:focus-visible {
 
 @media (max-width: 420px) {
   .app {
-    padding-inline: 0.9rem;
+    padding: 0.8rem 0.9rem 3.5rem;
   }
 
   .hero {
-    grid-template-columns: minmax(0, 1fr) 5rem;
-    padding: 1.2rem;
+    grid-template-columns: minmax(0, 1fr) 4.8rem;
+    min-height: 8.8rem;
+    padding: 1rem;
   }
 
   h1 {
-    font-size: 1.72rem;
+    font-size: 1.58rem;
   }
 
   .hero-copy > p:last-child {
-    font-size: 0.92rem;
+    font-size: 0.88rem;
   }
 
   .hero-plant {
-    width: 5rem;
+    width: 4.8rem;
   }
 
   .section-heading {
@@ -688,27 +598,17 @@ textarea:focus-visible {
 
 @media (min-width: 720px) {
   .app {
-    padding: 2.75rem 2rem 4.5rem;
-  }
-
-  .status-bar {
-    margin-bottom: 1.7rem;
-    padding-inline: 1rem;
-    font-size: 1.3rem;
-  }
-
-  .status-icons {
-    transform: scale(0.82);
+    padding: 1.35rem 2rem 4.5rem;
   }
 
   .hero {
-    grid-template-columns: minmax(0, 1fr) 8rem;
-    min-height: 13rem;
-    padding: 1.8rem 2rem;
+    grid-template-columns: minmax(0, 1fr) 7rem;
+    min-height: 10.75rem;
+    padding: 1.35rem 1.7rem;
   }
 
   h1 {
-    font-size: 2.4rem;
+    font-size: 2.05rem;
   }
 
   .hero-copy > p:last-child {
@@ -716,11 +616,11 @@ textarea:focus-visible {
   }
 
   .hero-plant {
-    width: 7.5rem;
+    width: 6.8rem;
   }
 
   .habit-section {
-    margin-top: 2.75rem;
+    margin-top: 2.35rem;
   }
 
   .section-heading h2 {

@@ -1,4 +1,5 @@
 const STORAGE_KEY = "habit-garden-soft.habits";
+const CYCLE_LENGTH = 15;
 
 const growthStages = [
   {
@@ -8,22 +9,22 @@ const growthStages = [
   },
   {
     min: 1,
-    label: "새싹",
+    label: "발아",
     image: "./assets/images/sprout-1-v2.png",
   },
   {
-    min: 3,
-    label: "잎새",
+    min: 4,
+    label: "작은 새싹",
     image: "./assets/images/sprout-2.png",
   },
   {
-    min: 6,
-    label: "작은 식물",
+    min: 8,
+    label: "잎 달린 새싹",
     image: "./assets/images/plant-1.png",
   },
   {
-    min: 11,
-    label: "큰 식물",
+    min: 12,
+    label: "더 자란 식물",
     image: "./assets/images/plant-2.png",
   },
 ];
@@ -85,6 +86,9 @@ function createDefaultHabits() {
       note: "잠들기 전 코드 하나만 잡기",
       plantedAt: yesterday,
       waterDates: [yesterday],
+      currentCycleWaterCount: 1,
+      completedCycles: 0,
+      lastWateredAt: yesterday,
     },
     {
       id: createHabitId(),
@@ -92,6 +96,9 @@ function createDefaultHabits() {
       note: "두 쪽만 읽어도 돌본 것으로 보기",
       plantedAt: dateKeyDaysAgo(5),
       waterDates: [dateKeyDaysAgo(5), dateKeyDaysAgo(4), yesterday, today],
+      currentCycleWaterCount: 4,
+      completedCycles: 0,
+      lastWateredAt: today,
     },
     {
       id: createHabitId(),
@@ -99,6 +106,9 @@ function createDefaultHabits() {
       note: "외운 문장을 소리 내어 한 번 말하기",
       plantedAt: today,
       waterDates: [],
+      currentCycleWaterCount: 0,
+      completedCycles: 0,
+      lastWateredAt: null,
     },
   ];
 }
@@ -112,20 +122,69 @@ function loadHabits() {
 
   try {
     const parsed = JSON.parse(stored);
-    return Array.isArray(parsed) ? parsed : [];
+    return Array.isArray(parsed) ? parsed.map(normalizeHabit) : [];
   } catch {
     return [];
   }
 }
 
 function saveHabits() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(habits));
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(habits.map(normalizeHabit)));
 }
 
-function getGrowthStage(totalWaterCount) {
+function normalizeHabit(habit) {
+  const waterDates = Array.isArray(habit.waterDates) ? habit.waterDates : [];
+  const cycleStats = getCycleStats(waterDates.length);
+
+  return {
+    ...habit,
+    waterDates,
+    currentCycleWaterCount: cycleStats.currentCycleWaterCount,
+    completedCycles: cycleStats.completedCycles,
+    lastWateredAt: waterDates.at(-1) ?? null,
+  };
+}
+
+function getCycleStats(totalWaterCount) {
+  return {
+    completedCycles: Math.floor(totalWaterCount / CYCLE_LENGTH),
+    currentCycleWaterCount: totalWaterCount % CYCLE_LENGTH,
+  };
+}
+
+function getGrowthStage(currentCycleWaterCount) {
   return growthStages.reduce((currentStage, stage) => {
-    return totalWaterCount >= stage.min ? stage : currentStage;
+    return currentCycleWaterCount >= stage.min ? stage : currentStage;
   }, growthStages[0]);
+}
+
+function renderCycleMarks(container, completedCycles) {
+  container.replaceChildren();
+
+  if (completedCycles <= 0) {
+    return;
+  }
+
+  const flowerCount = Math.floor(completedCycles / 3);
+  const leafCount = completedCycles % 3;
+  const marks = [
+    ...Array.from({ length: flowerCount }, () => ({
+      src: "./assets/images/1.png",
+      className: "cycle-mark is-flower",
+    })),
+    ...Array.from({ length: leafCount }, () => ({
+      src: "./assets/images/2.png",
+      className: "cycle-mark is-leaf",
+    })),
+  ];
+
+  marks.forEach((mark) => {
+    const image = document.createElement("img");
+    image.src = mark.src;
+    image.alt = "";
+    image.className = mark.className;
+    container.append(image);
+  });
 }
 
 function formatLastCare(habit) {
@@ -168,6 +227,7 @@ function renderHabits() {
       const card = template.content.firstElementChild.cloneNode(true);
       const plantImage = card.querySelector(".plant-image");
       const title = card.querySelector("h3");
+      const cycleMarks = card.querySelector(".cycle-marks");
       const growthLabel = card.querySelector(".growth-label");
       const note = card.querySelector(".habit-note");
       const lastCare = card.querySelector(".last-care");
@@ -179,16 +239,18 @@ function renderHabits() {
       const editButton = card.querySelector('[data-action="edit"]');
       const deleteButton = card.querySelector('[data-action="delete"]');
       const totalWaterCount = habit.waterDates.length;
-      const growthStage = getGrowthStage(totalWaterCount);
+      const { completedCycles, currentCycleWaterCount } = getCycleStats(totalWaterCount);
+      const growthStage = getGrowthStage(currentCycleWaterCount);
       const wateredToday = hasWateredToday(habit);
 
       plantImage.src = growthStage.image;
       plantImage.alt = `${growthStage.label} 단계`;
       title.textContent = habit.title;
+      renderCycleMarks(cycleMarks, completedCycles);
       growthLabel.textContent = growthStage.label;
       note.textContent = habit.note || "천천히 돌볼 기준을 적어두세요.";
       lastCare.textContent = formatLastCare(habit);
-      waterCount.textContent = `${totalWaterCount}회`;
+      waterCount.textContent = `${currentCycleWaterCount}회`;
       waterLabel.textContent = wateredToday ? "오늘 물줬어요" : "물주기";
       waterButton.classList.toggle("is-watered", wateredToday);
       waterButton.disabled = wateredToday;
@@ -232,6 +294,7 @@ function waterHabit(habitId) {
   }
 
   habit.waterDates.push(todayKey());
+  Object.assign(habit, normalizeHabit(habit));
   saveHabits();
   renderHabits();
 }
@@ -287,6 +350,9 @@ function upsertHabit(event) {
       note,
       plantedAt: todayKey(),
       waterDates: [],
+      currentCycleWaterCount: 0,
+      completedCycles: 0,
+      lastWateredAt: null,
     });
   }
 
@@ -318,4 +384,5 @@ habitDialog.addEventListener("click", (event) => {
 });
 document.addEventListener("click", closeAllMenus);
 
+saveHabits();
 renderHabits();

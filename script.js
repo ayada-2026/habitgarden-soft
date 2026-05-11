@@ -169,11 +169,11 @@ function renderCycleMarks(container, completedCycles) {
   const leafCount = completedCycles % 3;
   const marks = [
     ...Array.from({ length: flowerCount }, () => ({
-      src: "./assets/images/1.png",
+      src: "./assets/images/1-trimmed.png",
       className: "cycle-mark is-flower",
     })),
     ...Array.from({ length: leafCount }, () => ({
-      src: "./assets/images/2.png",
+      src: "./assets/images/2-trimmed.png",
       className: "cycle-mark is-leaf",
     })),
   ];

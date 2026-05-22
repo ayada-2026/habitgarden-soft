@@ -1,5 +1,6 @@
-const STORAGE_KEY = "habit-garden-soft.habits";
+﻿const STORAGE_KEY = "habit-garden-soft.habits";
 const CYCLE_LENGTH = 15;
+const THEME_COUNT = 4;
 
 const growthStages = [
   {
@@ -89,6 +90,7 @@ function createDefaultHabits() {
       currentCycleWaterCount: 1,
       completedCycles: 0,
       lastWateredAt: yesterday,
+      themeIndex: 0,
     },
     {
       id: createHabitId(),
@@ -99,6 +101,7 @@ function createDefaultHabits() {
       currentCycleWaterCount: 4,
       completedCycles: 0,
       lastWateredAt: today,
+      themeIndex: 1,
     },
     {
       id: createHabitId(),
@@ -109,6 +112,7 @@ function createDefaultHabits() {
       currentCycleWaterCount: 0,
       completedCycles: 0,
       lastWateredAt: null,
+      themeIndex: 2,
     },
   ];
 }
@@ -122,7 +126,9 @@ function loadHabits() {
 
   try {
     const parsed = JSON.parse(stored);
-    return Array.isArray(parsed) ? parsed.map(normalizeHabit) : [];
+    return Array.isArray(parsed)
+      ? parsed.map((habit, index) => normalizeHabit(habit, index))
+      : [];
   } catch {
     return [];
   }
@@ -132,9 +138,12 @@ function saveHabits() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(habits.map(normalizeHabit)));
 }
 
-function normalizeHabit(habit) {
+function normalizeHabit(habit, fallbackThemeIndex = 0) {
   const waterDates = Array.isArray(habit.waterDates) ? habit.waterDates : [];
   const cycleStats = getCycleStats(waterDates.length);
+  const themeIndex = Number.isInteger(habit.themeIndex)
+    ? habit.themeIndex
+    : fallbackThemeIndex % THEME_COUNT;
 
   return {
     ...habit,
@@ -142,6 +151,7 @@ function normalizeHabit(habit) {
     currentCycleWaterCount: cycleStats.currentCycleWaterCount,
     completedCycles: cycleStats.completedCycles,
     lastWateredAt: waterDates.at(-1) ?? null,
+    themeIndex,
   };
 }
 
@@ -243,6 +253,7 @@ function renderHabits() {
       const growthStage = getGrowthStage(currentCycleWaterCount);
       const wateredToday = hasWateredToday(habit);
 
+      card.dataset.theme = String(habit.themeIndex % THEME_COUNT);
       plantImage.src = growthStage.image;
       plantImage.alt = `${growthStage.label} 단계`;
       title.textContent = habit.title;
@@ -321,6 +332,18 @@ function closeHabitDialog() {
   editingHabitId = null;
 }
 
+function getNextThemeIndex() {
+  const themeIndexes = habits
+    .map((habit) => habit.themeIndex)
+    .filter(Number.isInteger);
+
+  if (themeIndexes.length === 0) {
+    return 0;
+  }
+
+  return (Math.max(...themeIndexes) + 1) % THEME_COUNT;
+}
+
 function upsertHabit(event) {
   event.preventDefault();
   const title = habitNameInput.value.trim();
@@ -353,6 +376,7 @@ function upsertHabit(event) {
       currentCycleWaterCount: 0,
       completedCycles: 0,
       lastWateredAt: null,
+      themeIndex: getNextThemeIndex(),
     });
   }
 
@@ -386,3 +410,7 @@ document.addEventListener("click", closeAllMenus);
 
 saveHabits();
 renderHabits();
+
+
+
+

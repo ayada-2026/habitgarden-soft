@@ -137,12 +137,12 @@ h1 {
   gap: 0.72rem;
 }
 
-.section-title img {
+.section-leaf {
   width: 3.75rem;
   height: 3.75rem;
-  object-fit: contain;
   flex: 0 0 auto;
   opacity: 0.88;
+  background: url("./assets/images/leaf-deco1.png") center / contain no-repeat;
 }
 
 .section-heading h2 {
@@ -712,7 +712,7 @@ textarea:focus-visible {
     gap: 0.66rem;
   }
 
-  .section-title img {
+  .section-leaf {
     width: 3.35rem;
     height: 3.35rem;
   }
@@ -769,6 +769,8 @@ textarea:focus-visible {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+
+
 
 
 

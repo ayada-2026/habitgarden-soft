@@ -119,8 +119,8 @@ h1 {
 
 .section-heading {
   display: grid;
-  gap: 0.45rem;
-  margin-bottom: 1rem;
+  gap: 0.34rem;
+  margin-bottom: 0.95rem;
 }
 
 .section-heading-top {
@@ -134,12 +134,12 @@ h1 {
   display: flex;
   align-items: center;
   min-width: 0;
-  gap: 0.72rem;
+  gap: 0.58rem;
 }
 
 .section-leaf {
-  width: 3.75rem;
-  height: 3.75rem;
+  width: 3.35rem;
+  height: 3.35rem;
   flex: 0 0 auto;
   opacity: 0.88;
   background: url("./assets/images/leaf-deco1.png") center / contain no-repeat;
@@ -155,8 +155,8 @@ h1 {
 .section-heading p {
   margin: 0;
   color: var(--muted);
-  font-size: 0.95rem;
-  line-height: 1.35;
+  font-size: 0.94rem;
+  line-height: 1.32;
 }
 
 .seed-button,
@@ -709,12 +709,12 @@ textarea:focus-visible {
 
   .section-title {
     align-items: center;
-    gap: 0.66rem;
+    gap: 0.52rem;
   }
 
   .section-leaf {
-    width: 3.35rem;
-    height: 3.35rem;
+    width: 3rem;
+    height: 3rem;
   }
 
   .seed-button {
@@ -769,6 +769,8 @@ textarea:focus-visible {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+
+
 
 
 

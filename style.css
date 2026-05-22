@@ -143,6 +143,7 @@ h1 {
   flex: 0 0 auto;
   opacity: 0.88;
   background: url("./assets/images/leaf-deco1.png") center / contain no-repeat;
+  transform: translateY(0.72rem);
 }
 
 .section-heading h2 {
@@ -715,6 +716,7 @@ textarea:focus-visible {
   .section-leaf {
     width: 2.75rem;
     height: 2.75rem;
+      transform: translateY(0.62rem);
   }
 
   .section-heading p {
@@ -773,6 +775,7 @@ textarea:focus-visible {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+
 
 
 

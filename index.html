@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
@@ -26,17 +26,17 @@
 
         <section class="habit-section" aria-labelledby="habitTitle">
           <div class="section-heading">
-            <div class="section-title">
-              <img src="./assets/images/leaf-deco.png" alt="" />
-              <div>
+            <div class="section-heading-top">
+              <div class="section-title">
+                <img src="./assets/images/leaf-deco1.png" alt="" />
                 <h2 id="habitTitle">내 정원</h2>
-                <p>몇 가지 습관을 천천히 키워보세요.</p>
               </div>
+              <button type="button" class="seed-button" id="addHabitButton">
+                <span aria-hidden="true">+</span>
+                <span>씨앗 심기</span>
+              </button>
             </div>
-            <button type="button" class="seed-button" id="addHabitButton">
-              <span aria-hidden="true">+</span>
-              <span>씨앗 심기</span>
-            </button>
+            <p>몇 가지 습관을 천천히 키워보세요.</p>
           </div>
 
           <div class="empty-state" id="emptyState" hidden>
@@ -124,3 +124,4 @@
     <script src="./script.js"></script>
   </body>
 </html>
+
